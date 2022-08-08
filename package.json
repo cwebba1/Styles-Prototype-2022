@@ -1,0 +1,23 @@
+{
+  "name": "Cwebba Stylesheet Prototype 2022",
+  "version": "0.2.0",
+  "description": "CSS Stylesheet",
+  "main": "c-styles.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwebba1/Styles-Prototype-2022.git"
+  },
+  "bugs": {
+    "url": "https://https://github.com/cwebba1/Styles-Prototype-2022/issues"
+  },
+  "keywords": [],
+  "author": "Craig Webb",
+  "email": "cwebba1@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

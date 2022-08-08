@@ -1,0 +1,613 @@
+@import url("reset-package.css") all;
+@import url("color-vars-02.css") all;
+{
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 5000px;
+  }
+
+ :root {
+    --border-radius: 0.25rem;
+    --border-width: 1px;
+    --outline-width: 3px;
+    --spacing: 1rem;
+    --transition: 0.2s ease-in-out;
+    --color-primary:red;
+    --disp-flex:display:flex;
+    --flex-column:flex-direction:column;
+    --disp-grid:display: grid;
+    --back-color: rgba(222, 204, 252, .85);
+    --typography-spacing-vertical: calc(1em + 0.5rem);
+}
+
+[data-theme=light],
+:root:not([data-theme=dark]) {
+  color-scheme: light;
+  --background-color: var(--basal-wht);
+  color: var(--bdy-grn);
+  --rainbow-grad: linear-gradient(70deg, blue, green, red, yellow);
+  --brand: var(--tan-txt);
+  --brand-brown:rgba(140, 65, 3, 0.99);
+  --old-yeller: rgba(238, 238, 221, 0.99);
+  --primary: #1095c1;
+  --primary-hover: var(--royal-blu);
+  --primary-focus: var(--royal-blu);
+  --primary-visited:var(--visitation-blu);
+  --primary-active:var(--redskin);
+  --primary-inverse: #fff;
+  /* This is imcomplete */
+}
+
+:where(html) {
+    --font-sans: "Open Sans", system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans, Arial, "Helvetica Neue", Helvetica,sans-serif;
+    --font-serif: ui-serif,serif;
+    --font-brand-sans: "Ubuntu", Verdana, "Corbel", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    --font-mono: Dank Mono,Operator Mono,Inconsolata,Fira Mono,ui-monospace,SF Mono,Monaco,Droid Sans Mono,Source Code Pro,monospace;
+    --rem:1rem;
+    --baseunit: 1.3;
+    --line-height: 1.5;
+    --font-lineheight-00: .95;
+    --font-lineheight-0: 1.1;
+    --font-lineheight-1: 1.25;
+    --font-lineheight-2: 1.375;
+    --font-lineheight-3: 1.5;
+    --font-lineheight-4: 1.75;
+    --font-lineheight-5: 2;
+    --font-letterspacing-0: -.05em;
+    --font-letterspacing-1: .025em;
+    --font-letterspacing-2: .050em;
+    --font-letterspacing-cwebba: 0.0625em;
+    --font-letterspacing-3: .075em;
+    --font-letterspacing-4: .150em;
+    --font-letterspacing-5: .500em;
+    --font-letterspacing-6: .750em;
+    --font-letterspacing-7: 1em;
+    --font-weight-1: 100;
+    --font-weight-2: 200;
+    --font-weight-3: 300;
+    --font-weight-4: 400;
+    --font-weight-5: 500;
+    --font-weight-6: 600;
+    --font-weight-7: 700;
+    --font-weight-8: 800;
+    --font-weight-9: 900;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  ::before,
+  ::after {
+    text-decoration: inherit;
+    vertical-align: inherit;
+  }
+  
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+      display:var(--disp-flex);
+    color-scheme: dark light;
+    block-size: 100%;
+  font-size :20px;
+  line-height: var(--line-height);
+  font-weight: var(--font-weight-4);
+  font-family : var(--font-sans);
+  cursor: default;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  margin:0;
+  padding:0;
+}
+
+  body {
+    display:var(--flex-column);
+/*    min-block-size: 100%;*/
+min-width:100%;
+    display: var(--disp-flex);
+    place-content: center;/*https://css-tricks.com/almanac/properties/p/place-content/*/
+    margin:0;
+    padding:0;
+  
+  }
+  
+html { 	background:var(--background-color); }
+body {	background:var(--background-color); }
+main {	background:var(--pine-wht); }
+header, footer {	background:#FEFDFA; }
+.sidebar {	background:#CEEFEF; }
+
+body {
+margin: 0;
+height: 100%;
+display: flex;
+min-height: 100vh;
+/*text-align: center;*/
+flex-direction: column;
+font-family:  sans-serif;
+}
+.basal {
+  width: 97.5%;
+  margin: 0 auto;
+/*  display:flex;
+  flex-direction:column;*/
+height: 100%;
+display: flex;
+min-height: 100vh;
+flex-direction: column;
+  background:rgba(253, 254, 251, 0.8);
+  transition:width .25s ease-in; 
+}
+
+.main {
+flex: 1;
+}
+footer {
+padding: calc(var(--baseunit) * 1rem);
+background: var(--back-color);
+}
+
+main {  padding: calc(var(--baseunit) * 1rem);
+}
+
+/**
+ * Sectioning
+ * Container and responsive spacings for header, main, footer
+ */
+ main {
+    display: block;
+  }
+  
+  body {
+    width: 100%;
+    margin: 0;
+  }
+  body > header,
+  body > main,
+  body > footer {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: var(--block-spacing-vertical) 0;
+  }
+  
+  .component {padding:calc(var(--baseunit) * 1em);
+  }
+
+/**
+ * Typography
+ */
+
+ address,
+ blockquote,
+ dl,
+ figure,
+ form,
+ ol,
+ p,
+ pre,
+ table,
+ ul {
+   margin-top: 0;
+   margin-bottom: var(--typography-spacing-vertical);
+   color: var(--color);
+   font-style: normal;
+   font-weight: var(--font-weight);
+   font-size: var(--font-size);
+ }
+
+ /*
+3/16 = 0.1875
+0.375
+9/16 = 0.5625
+10/16 = 0.625
+11/16 = 0.6875
+12/16 = 0.75
+13/16 = 0.8125
+14/16 = 0.875
+15/16 = 0.9375
+6/16 = 0.375
+18/16 = 1.125
+19/16 = 1.1875
+20/16 = 1.25
+*/
+
+.p6 { font-size:0.375em;
+    line-height:1em;
+    }
+    
+    .p8 { font-size:0.5em;
+    line-height:1em;
+    }
+    
+    .p9 {font-size:.5625em;
+    line-height: 1.5em;
+    margin: 0 0 2.15em 0;
+    }/*  18px*/
+    
+    .p10 {font-size:.625em;
+    line-height: 1.5em;
+    margin: 0 0 1.75em 0;
+    }/*  .625em  */
+    
+    .p11 {font-size:.6875em;
+    line-height: 1.5em;
+    margin: 0 0 1.375em 0;
+    }
+    
+    .p12 {font-size:.75em;
+    line-height: 1.5em;
+    margin: .75em 0 .75em 0;
+    }
+    
+    .p13 {font-size:.8125em;
+    line-height: 1.6875em;
+    margin: 0.65625em 0 0.65625em 0;
+    }/* 12.5px margin */
+    
+    .p14 {font-size:.875em;
+    line-height: 1.5em;
+    margin: .625em 0 1em 0;
+    }/* .125em+1.5em  */
+    
+    .p14b {font-size:.875em;
+    line-height: 1.5em;
+    margin: 0;
+    }/*  0.6875em  */
+    
+    .p15 {font-size:.9375em;
+    line-height: 1.5em;
+    margin: 0 0 0.625em 0;
+    }
+    
+    .p18 {font-size:1.125em;
+    line-height: 1.375em;
+    margin: 0 0 0.458333333333333em 0;
+    }
+    
+    .p19 {font-size:1.1875em;
+    line-height: 1.1875em;
+    margin: 0 0 0.625em 0;
+    }
+    
+    .p20 {font-size:1.25em;
+    line-height: 1.25em;
+    margin: 0 0 0.416666666666667em 0;
+    }
+    
+    .p24 {font-size:1.5em;
+    line-height: 2.25em;
+    margin: .25em 0 1.5em 0;
+    float:right;
+    text-align:right;
+    }
+    
+    
+ 
+ a {
+   --color: var(--midnight-blue);
+   --background-color: transparent;
+   outline: none;
+   background-color: var(--background-color);
+   color: var(--color);
+   -webkit-text-decoration: var(--text-decoration);
+   text-decoration: var(--text-decoration);
+   transition: background-color var(--transition), color var(--transition), box-shadow var(--transition), -webkit-text-decoration var(--transition);
+   transition: background-color var(--transition), color var(--transition), text-decoration var(--transition), box-shadow var(--transition);
+   transition: background-color var(--transition), color var(--transition), text-decoration var(--transition), box-shadow var(--transition), -webkit-text-decoration var(--transition);
+ }
+ a:hover, a:active, a:focus {
+   --color: var(--primary-hover);
+   --text-decoration: underline;
+ }
+      
+a:focus { 
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+border: 1px solid rgba(81, 203, 238, 0.1);
+  }
+
+/* a:visited {
+    --background-color: var(--primary-focus);
+  }*/
+a:visited {color:--visitation-blu;
+    text-decoration: none;
+    }
+    
+    a:active { 
+      color:--redskin; 
+      text-decoration: underline; 
+    }
+     
+ a.secondary {
+   --color: var(--secondary);
+ }
+ a.secondary:hover, a.secondary:active, a.secondary:focus {
+   --color: var(--secondary-hover);
+ }
+ a.secondary:focus {
+   --background-color: var(--secondary-focus);
+ }
+ a.contrast {
+   --color: var(--contrast);
+ }
+ a.contrast:hover, a.contrast:active, a.contrast:focus {
+   --color: var(--contrast-hover);
+ }
+ a.contrast:focus {
+   --background-color: var(--contrast-focus);
+ }
+ 
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    font-weight: var(--font-weight-6);
+    color: var(--brand);
+    letter-spacing: var(--font-letterspacing-2);
+    font-family: var(--font-serif);
+}
+    
+    h1 {
+      font-size: calc(var(--rem) * 2);
+        line-height: var(--typography-spacing-vertical);
+    }
+      
+    h2 {
+        font-size: calc(var(--rem) * 1.75);
+        /*    --typography-spacing-vertical: 2.625rem; */
+        line-height: var(--typography-spacing-vertical);
+    }
+    
+    h3 {
+      font-size: calc(var(--rem) * 1.5);
+      line-height: var(--typography-spacing-vertical);
+      /*      --typography-spacing-vertical: 2.25rem;*/
+    }
+    
+    h4 {
+      --font-size: 1.25rem;
+      font-size: calc(var(--rem) * 1.25);
+      /*  --typography-spacing-vertical: 1.874rem;*/
+      line-height: var(--typography-spacing-vertical);
+    }
+    
+    h5 {
+      font-size: calc(var(--rem) * 1.125);
+      line-height: var(--typography-spacing-vertical);
+    }
+    h6 {
+        font-size: 1rem;
+        line-height: var(--typography-spacing-vertical);
+    }
+
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+dl dl,
+dl ol,
+dl ul,
+ol dl,
+ul dl {
+  margin: 0;
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+  margin: 0;
+}
+
+/**
+ * Nav
+ */
+ nav,
+ nav ul {
+   display: flex;
+ }
+ 
+ nav {
+   justify-content: space-between;
+ }
+ nav ol,
+ nav ul {
+   align-items: center;
+   margin-bottom: 0;
+   padding: 0;
+   list-style: none;
+ }
+ nav ol:first-of-type,
+ nav ul:first-of-type {
+   margin-left: calc(var(--spacing) * -0.5);
+ }
+ nav ol:last-of-type,
+ nav ul:last-of-type {
+   margin-right: calc(var(--spacing) * -0.5);
+ }
+ nav li {
+   display: inline-block;
+   margin: 0;
+   padding: var(--spacing) calc(var(--spacing) * 0.5);
+ }
+ nav li > *,
+ nav li > input:not([type=checkbox]):not([type=radio]) {
+   margin-bottom: 0;
+ }
+ nav a {
+   display: block;
+/*   margin: calc(var(--spacing) * -1) calc(var(--spacing) * -0.5);
+   padding: var(--spacing) calc(var(--spacing) * 0.5);
+   border-radius: var(--border-radius); */
+   text-decoration: none;
+   padding:.0312em .25em;
+ }
+ nav a:hover, nav a:active, nav a:focus {
+   text-decoration: none;
+}
+ 
+ aside nav,
+ aside ol,
+ aside ul,
+ aside li {
+   display: block;
+ }
+ aside li {
+   padding: calc(var(--spacing) * 0.5);
+ }
+ aside li a {
+   margin: calc(var(--spacing) * -0.5);
+   padding: calc(var(--spacing) * 0.5);
+ }
+
+:focus { 
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 0.1);
+}
+
+/**
+ * Embedded content
+ */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+audio,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+iframe {
+  border-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-style: none;
+}
+
+svg:not([fill]) {
+  fill: currentColor;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/**
+ * Horizontal scroller (<figure>)
+ */
+ figure {
+    display: block;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+  }
+  figure figcaption {
+    padding: calc(var(--spacing) * 0.5) 0;
+    color: var(--muted-color);
+  }
+
+
+/*! Layouts */
+
+/**
+* Grid
+* Minimal grid system with auto-layout columns
+*/
+.grid {
+    grid-column-gap: var(--grid-spacing-horizontal);
+    grid-row-gap: var(--grid-spacing-vertical);
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+  @media (min-width: 992px) {
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
+    }
+  }
+  .grid > * {
+    min-width: 0;
+  }
+  
+
+/*! Form Styles */
+
+
+[type=checkbox],
+[type=radio] {
+  --border-width: 2px;
+}
+
+[type=checkbox][role=switch] {
+  --border-width: 3px;
+}
+
+thead th,
+thead td {
+  --border-width: 3px;
+}
+
+:not(thead) > * > td {
+  --font-size: 0.875em;
+}
+
+pre,
+code,
+kbd,
+samp {
+  --font-family: "Menlo", "Consolas", "Roboto Mono", "Ubuntu Monospace",
+    "Noto Mono", "Oxygen Mono", "Liberation Mono", monospace,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+kbd {
+  --font-weight: bolder;
+}
+
+
+  /** Cwebba Style */
+
+  .in-head {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+}
+.in-head figure {
+    width:12rem;
+}
